@@ -4,11 +4,15 @@ import { Cryptid } from "@/models/Cryptid.js"
 import { AppState } from "@/AppState.js"
 
 class CryptidsService {
+  async getCryptidById(cryptidId) {
+    const response = await api.get(`api/cryptids/${cryptidId}`);
+    logger.log('GOT CRYPTID BY ID 👽', response.data)
+  }
   async getAllCryptids() {
-    const response = await api.get('api/cryptids')
-    logger.log('GOT CRYPTIDS 👹👽🧌', response.data)
-    const cryptids = response.data.map(cryptidPOJO => new Cryptid(cryptidPOJO))
-    AppState.cryptids = cryptids
+    const response = await api.get('api/cryptids');
+    logger.log('GOT CRYPTIDS 👹👽🧌', response.data);
+    const cryptids = response.data.map(cryptidPOJO => new Cryptid(cryptidPOJO));
+    AppState.cryptids = cryptids;
   }
 
 }
