@@ -14,6 +14,6 @@ public class Cryptid
   public string ImgUrl { get; set; }
   public string Origin { get; set; }
   public string Size { get; set; }
-  public Guid CryptidCode { get; set; } = new Guid();
+  public string CryptidCode { get; set; } = Guid.NewGuid().ToString();
   public string DiscovererId { get; set; }
 }
