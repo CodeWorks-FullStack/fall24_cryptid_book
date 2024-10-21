@@ -7,6 +7,8 @@ class CryptidsService {
   async getCryptidById(cryptidId) {
     const response = await api.get(`api/cryptids/${cryptidId}`);
     logger.log('GOT CRYPTID BY ID 👽', response.data)
+    const cryptid = new Cryptid(response.data)
+    AppState.activeCryptid = cryptid
   }
   async getAllCryptids() {
     const response = await api.get('api/cryptids');

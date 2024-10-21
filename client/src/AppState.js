@@ -8,6 +8,7 @@ export const AppState = reactive({
   account: null,
   /** @type {import('./models/Cryptid.js').Cryptid[]}*/
   cryptids: [],
-
+  /** @type {import('./models/Cryptid.js').Cryptid}*/
+  activeCryptid: null
 })
 
