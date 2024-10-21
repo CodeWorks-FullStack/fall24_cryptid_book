@@ -1,5 +1,6 @@
 namespace cryptid_book.Controllers;
 
+
 [Authorize]
 [ApiController]
 [Route("[controller]")]

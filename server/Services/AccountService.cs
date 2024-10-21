@@ -1,5 +1,6 @@
 namespace cryptid_book.Services;
 
+
 public class AccountService
 {
   private readonly AccountsRepository _repo;
