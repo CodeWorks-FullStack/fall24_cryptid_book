@@ -1,4 +1,7 @@
 
+
+using Microsoft.AspNetCore.Http.HttpResults;
+
 namespace cryptid_book.Services;
 
 public class CryptidsService
@@ -13,5 +16,11 @@ public class CryptidsService
   {
     Cryptid cryptid = _repository.CreateCryptid(cryptidData);
     return cryptid;
+  }
+
+  internal List<Cryptid> GetAllCryptids()
+  {
+    List<Cryptid> cryptids = _repository.GetAllCryptids();
+    return cryptids;
   }
 }
