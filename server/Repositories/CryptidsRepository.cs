@@ -24,11 +24,7 @@ public class CryptidsRepository
     JOIN accounts ON accounts.id = cryptids.discovererId
     WHERE cryptids.id = LAST_INSERT_ID();";
 
-    Cryptid cryptid = _db.Query<Cryptid, Profile, Cryptid>(sql, (cryptid, profile) =>
-    {
-      cryptid.Discoverer = profile;
-      return cryptid;
-    }, cryptidData).FirstOrDefault();
+    Cryptid cryptid = _db.Query<Cryptid, Profile, Cryptid>(sql, JoinDiscovererToCryptid, cryptidData).FirstOrDefault();
     return cryptid;
   }
 
@@ -41,12 +37,14 @@ public class CryptidsRepository
     FROM cryptids
     JOIN accounts ON accounts.id = cryptids.discovererId;";
 
-    List<Cryptid> cryptids = _db.Query<Cryptid, Profile, Cryptid>(sql, (cryptid, profile) =>
-    {
-      cryptid.Discoverer = profile;
-      return cryptid;
-    }).ToList();
+    List<Cryptid> cryptids = _db.Query<Cryptid, Profile, Cryptid>(sql, JoinDiscovererToCryptid).ToList();
     return cryptids;
+  }
+
+  private Cryptid JoinDiscovererToCryptid(Cryptid cryptid, Profile profile)
+  {
+    cryptid.Discoverer = profile;
+    return cryptid;
   }
 }
 
