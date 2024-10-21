@@ -32,7 +32,7 @@ async function getCryptidById() {
         <img :src="cryptid.imgUrl" :alt="cryptid.name" class="img-fluid">
       </div>
       <div class="col-md-8">
-        <h1>{{ cryptid.name }}</h1>
+        <h1 class="kablammo-font">{{ cryptid.name }}</h1>
       </div>
     </section>
   </div>
