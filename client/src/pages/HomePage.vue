@@ -1,8 +1,11 @@
 <script setup>
+import { AppState } from '@/AppState.js';
 import { cryptidsService } from '@/services/CryptidsService.js';
 import { logger } from '@/utils/Logger.js';
 import Pop from '@/utils/Pop.js';
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
+
+const cryptids = computed(() => AppState.cryptids)
 
 onMounted(() => {
   getAllCryptids()
@@ -24,6 +27,12 @@ async function getAllCryptids() {
     <section class="row hero my-3 align-items-center rounded border border-4 border-danger">
       <div class="col-12">
         <h1 class="kablammo-font text-danger ms-3">Cryptid Book</h1>
+      </div>
+    </section>
+
+    <section class="row">
+      <div v-for="cryptid in cryptids" :key="cryptid.id" class="col-12">
+        {{ cryptid.name }}
       </div>
     </section>
   </div>
