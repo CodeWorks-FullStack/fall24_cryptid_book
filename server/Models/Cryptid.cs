@@ -16,4 +16,5 @@ public class Cryptid
   public string Size { get; set; }
   public string CryptidCode { get; set; } = Guid.NewGuid().ToString();
   public string DiscovererId { get; set; }
+  public Profile Discoverer { get; set; }
 }

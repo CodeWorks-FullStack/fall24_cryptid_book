@@ -28,5 +28,4 @@ public class CryptidsController : ControllerBase
       return BadRequest(exception.Message);
     }
   }
-
 }

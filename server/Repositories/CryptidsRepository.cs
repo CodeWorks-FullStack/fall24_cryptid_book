@@ -16,9 +16,18 @@ public class CryptidsRepository
     cryptids(name, threatLevel, size, origin, imgUrl, cryptidCode, discovererId)
     VALUES(@Name, @ThreatLevel, @Size, @Origin, @ImgUrl, @CryptidCode, @DiscovererId);
 
-    SELECT * FROM cryptids WHERE id = LAST_INSERT_ID();";
+    SELECT
+    cryptids.*,
+    accounts.*
+    FROM cryptids
+    JOIN accounts ON accounts.id = cryptids.discovererId
+    WHERE cryptids.id = LAST_INSERT_ID();";
 
-    Cryptid cryptid = _db.Query<Cryptid>(sql, cryptidData).FirstOrDefault();
+    Cryptid cryptid = _db.Query<Cryptid, Profile, Cryptid>(sql, (cryptid, profile) =>
+    {
+      cryptid.Discoverer = profile;
+      return cryptid;
+    }, cryptidData).FirstOrDefault();
     return cryptid;
   }
 }
