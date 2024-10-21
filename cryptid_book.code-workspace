@@ -8,5 +8,29 @@
       "name": "server",
       "path": "server"
     }
-  ]
+  ],
+  "settings": {
+    "workbench.colorCustomizations": {
+      "activityBar.activeBackground": "#d46cfd",
+      "activityBar.background": "#d46cfd",
+      "activityBar.foreground": "#15202b",
+      "activityBar.inactiveForeground": "#15202b99",
+      "activityBarBadge.background": "#fdda81",
+      "activityBarBadge.foreground": "#15202b",
+      "commandCenter.border": "#e7e7e799",
+      "sash.hoverBorder": "#d46cfd",
+      "statusBar.background": "#c53afc",
+      "statusBar.debuggingBackground": "#71fc3a",
+      "statusBar.debuggingForeground": "#15202b",
+      "statusBar.foreground": "#e7e7e7",
+      "statusBarItem.hoverBackground": "#d46cfd",
+      "statusBarItem.remoteBackground": "#c53afc",
+      "statusBarItem.remoteForeground": "#e7e7e7",
+      "titleBar.activeBackground": "#c53afc",
+      "titleBar.activeForeground": "#e7e7e7",
+      "titleBar.inactiveBackground": "#c53afc99",
+      "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#c53afc"
+  }
 }
