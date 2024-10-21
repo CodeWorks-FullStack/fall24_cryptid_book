@@ -23,4 +23,16 @@ public class CryptidsService
     List<Cryptid> cryptids = _repository.GetAllCryptids();
     return cryptids;
   }
+
+  internal Cryptid GetCryptidById(int cryptidId)
+  {
+    Cryptid cryptid = _repository.GetCryptidById(cryptidId);
+
+    if (cryptid == null)
+    {
+      throw new Exception($"Invalid cryptid id: {cryptidId}");
+    }
+
+    return cryptid;
+  }
 }
