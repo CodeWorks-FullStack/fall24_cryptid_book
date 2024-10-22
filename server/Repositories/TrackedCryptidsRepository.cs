@@ -40,8 +40,7 @@ public class TrackedCryptidsRepository
     FROM
     trackedCryptids
     JOIN accounts ON accounts.id = trackedCryptids.accountId
-    WHERE
-    trackedCryptids.cryptidId = @cryptidId;";
+    WHERE trackedCryptids.cryptidId = @cryptidId;";
 
     List<TrackedCryptidProfile> trackedCryptidProfiles = _db.Query<TrackedCryptid, TrackedCryptidProfile, TrackedCryptidProfile>(sql, (trackedCryptid, profile) =>
     {
