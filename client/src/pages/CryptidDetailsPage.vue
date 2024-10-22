@@ -1,5 +1,6 @@
 <script setup>
 import { AppState } from '@/AppState.js';
+import ProfilePicture from '@/components/ProfilePicture.vue';
 import { cryptidsService } from '@/services/CryptidsService.js';
 import { trackedCryptidsService } from '@/services/TrackedCryptidsService.js';
 import { logger } from '@/utils/Logger.js';
@@ -8,6 +9,7 @@ import { computed, onMounted, onUnmounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 const cryptid = computed(() => AppState.activeCryptid)
+const trackers = computed(() => AppState.trackedCryptidProfiles)
 const route = useRoute()
 
 onMounted(() => {
@@ -72,6 +74,14 @@ async function createTrackedCryptid() {
             </h2>
           </div>
           <div>
+            <h3>Trackers</h3>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span v-for="tracker in trackers" :key="tracker.trackedCryptidId">
+                <ProfilePicture :profile="tracker" />
+              </span>
+            </div>
+          </div>
+          <div>
             <button @click="createTrackedCryptid()" class="btn btn-danger fs-2">Track the {{ cryptid.name }}</button>
           </div>
         </div>
@@ -83,7 +93,8 @@ async function createTrackedCryptid() {
 
 <style lang="scss" scoped>
 h1,
-h2 {
+h2,
+h3 {
   text-shadow: 1px 1px var(--bs-light);
 }
 </style>
