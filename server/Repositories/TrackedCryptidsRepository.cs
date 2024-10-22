@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 namespace cryptid_book.Repositories;
 
 public class TrackedCryptidsRepository
