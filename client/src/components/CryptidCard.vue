@@ -30,7 +30,6 @@ defineProps({
 }
 
 h2 {
-  font-size: 3rem;
   position: absolute;
   top: 0;
   text-shadow: 1px 1px var(--bs-light);

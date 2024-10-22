@@ -32,7 +32,7 @@ async function getAllCryptids() {
     </section>
 
     <section class="row">
-      <div v-for="cryptid in cryptids" :key="cryptid.id" class="col-md-3 mb-3">
+      <div v-for="cryptid in cryptids" :key="cryptid.id" class="col-lg-3 col-md-4 col-sm-6 mb-3">
         <CryptidCard :cryptid="cryptid" />
       </div>
     </section>

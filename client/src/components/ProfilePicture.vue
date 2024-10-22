@@ -8,13 +8,13 @@ defineProps({
 
 
 <template>
-  <img :src="profile.picture" :alt="profile.name">
+  <img :src="profile.picture" :alt="profile.name" :title="profile.name">
 </template>
 
 
 <style lang="scss" scoped>
 img {
-  width: 100px;
+  width: 50px;
   aspect-ratio: 1/1;
   border-radius: 50%;
   object-fit: cover;
