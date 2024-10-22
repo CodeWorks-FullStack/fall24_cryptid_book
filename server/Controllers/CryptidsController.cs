@@ -1,5 +1,6 @@
 namespace cryptid_book.Controllers;
 
+
 [ApiController]
 [Route("api/[controller]")]
 public class CryptidsController : ControllerBase
