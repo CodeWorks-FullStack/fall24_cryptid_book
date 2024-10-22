@@ -11,6 +11,7 @@ class CryptidsService {
     AppState.cryptids.push(newCryptid)
   }
   async getCryptidById(cryptidId) {
+    AppState.activeCryptid = null
     const response = await api.get(`api/cryptids/${cryptidId}`);
     logger.log('GOT CRYPTID BY ID 👽', response.data)
     const cryptid = new Cryptid(response.data)

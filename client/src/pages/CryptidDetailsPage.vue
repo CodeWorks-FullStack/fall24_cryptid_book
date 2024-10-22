@@ -12,9 +12,11 @@ const route = useRoute()
 
 onMounted(() => {
   getCryptidById()
+  getTrackersByCryptidId()
 })
 
 watch(cryptid, () => {
+  if (!cryptid.value) return
   document.querySelector('main').style.backgroundImage = `url(${cryptid.value.imgUrl})`
 })
 
@@ -25,6 +27,15 @@ onUnmounted(() => {
 async function getCryptidById() {
   try {
     await cryptidsService.getCryptidById(route.params.cryptidId)
+  } catch (error) {
+    Pop.meow(error)
+    logger.error(error)
+  }
+}
+
+async function getTrackersByCryptidId() {
+  try {
+    await trackedCryptidsService.getTrackersByCryptidId(route.params.cryptidId)
   } catch (error) {
     Pop.meow(error)
     logger.error(error)
