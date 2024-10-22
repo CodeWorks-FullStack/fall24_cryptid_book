@@ -10,3 +10,8 @@ public class TrackedCryptidProfile : Profile
 {
   public int TrackedCryptidId { get; set; }
 }
+
+public class TrackedCryptidCryptid : Cryptid
+{
+  public int TrackedCryptidId { get; set; }
+}

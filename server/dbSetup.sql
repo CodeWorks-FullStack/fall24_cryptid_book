@@ -50,3 +50,21 @@ FROM
   JOIN accounts ON accounts.id = trackedCryptids.accountId
 WHERE
   trackedCryptids.id = 9;
+
+SELECT
+  trackedCryptids.*,
+  accounts.*
+FROM
+  trackedCryptids
+  JOIN accounts ON accounts.id = trackedCryptids.accountId
+WHERE
+  trackedCryptids.cryptidId = 7;
+
+SELECT
+  *
+FROM
+  trackedCryptids
+  JOIN cryptids ON cryptids.id = `trackedCryptids`.`cryptidId`
+  JOIN accounts ON cryptids.`discovererId` = accounts.id
+WHERE
+  `trackedCryptids`.`accountId` = '65f87bc1e02f1ee243874743';
