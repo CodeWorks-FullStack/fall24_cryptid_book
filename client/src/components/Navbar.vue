@@ -31,9 +31,9 @@ function toggleTheme() {
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
-            About
-          </router-link>
+          <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#cryptid-modal">
+            Post Cryptid
+          </button>
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
