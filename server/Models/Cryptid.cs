@@ -2,11 +2,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace cryptid_book.Models;
 
-public class Cryptid
+public class Cryptid : RepoItem<int>
 {
-  public int Id { get; set; }
-  public DateTime CreatedAt { get; set; }
-  public DateTime UpdatedAt { get; set; }
   public string Name { get; set; }
   [Range(0, 10)]
   public int ThreatLevel { get; set; }
