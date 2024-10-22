@@ -9,7 +9,9 @@ import { computed, onMounted, onUnmounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 const cryptid = computed(() => AppState.activeCryptid)
+const account = computed(() => AppState.account)
 const trackers = computed(() => AppState.trackedCryptidProfiles)
+const foundTracker = computed(() => trackers.value.find(tracker => tracker.id == account.value?.id))
 const route = useRoute()
 
 onMounted(() => {
@@ -54,6 +56,18 @@ async function createTrackedCryptid() {
   }
 }
 
+async function deleteTrackedCryptid() {
+  try {
+    const yes = await Pop.confirm(`Are you sure that you want to end your relationship with ${cryptid.value.name}?`)
+    if (!yes) return
+    await trackedCryptidsService.deleteTrackedCryptid(foundTracker.value.trackedCryptidId)
+  }
+  catch (error) {
+    Pop.meow(error)
+    logger.error(error)
+  }
+}
+
 </script>
 
 
@@ -81,8 +95,13 @@ async function createTrackedCryptid() {
               </span>
             </div>
           </div>
-          <div>
-            <button @click="createTrackedCryptid()" class="btn btn-danger fs-2">Track the {{ cryptid.name }}</button>
+          <div v-if="account">
+            <button v-if="!foundTracker" @click="createTrackedCryptid()" class="btn btn-danger fs-2">
+              Track the {{ cryptid.name }}
+            </button>
+            <button v-else @click="deleteTrackedCryptid()" class="btn btn-danger fs-2">
+              UnTrack the {{ cryptid.name }}
+            </button>
           </div>
         </div>
       </div>
