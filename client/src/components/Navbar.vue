@@ -1,9 +1,11 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
+import { AppState } from '@/AppState.js';
 
 const theme = ref(loadState('theme') || 'light')
+const account = computed(() => AppState.account)
 
 onMounted(() => {
   document.documentElement.setAttribute('data-bs-theme', theme.value)
@@ -30,7 +32,7 @@ function toggleTheme() {
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
-        <li>
+        <li v-if="account">
           <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#cryptid-modal">
             Post Cryptid
           </button>
