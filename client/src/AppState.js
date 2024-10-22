@@ -11,6 +11,9 @@ export const AppState = reactive({
   /** @type {import('./models/Cryptid.js').Cryptid}*/
   activeCryptid: null,
   /** @type {import('./models/TrackedCryptidProfile.js').TrackedCryptidProfile[]}*/
-  trackedCryptidProfiles: []
+  trackedCryptidProfiles: [],
+  /** @type {import('./models/TrackedCryptidCryptid.js').TrackedCryptidCryptid[]}*/
+  myTrackedCryptidCryptids: [],
+
 })
 
