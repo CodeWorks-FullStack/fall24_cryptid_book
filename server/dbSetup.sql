@@ -41,3 +41,12 @@ CREATE TABLE
     FOREIGN KEY (accountId) REFERENCES accounts (id) ON DELETE CASCADE,
     UNIQUE (cryptidId, accountId)
   );
+
+SELECT
+  trackedCryptids.*,
+  accounts.*
+FROM
+  trackedCryptids
+  JOIN accounts ON accounts.id = trackedCryptids.accountId
+WHERE
+  trackedCryptids.id = 9;
