@@ -73,7 +73,7 @@ async function createTrackedCryptid() {
                 :class="{ 'text-danger': threatNumber < cryptid.threatLevel, 'text-secondary': threatNumber > cryptid.threatLevel }"></i>
             </h2>
           </div>
-          <div>
+          <div v-if="trackers.length">
             <h3>Trackers</h3>
             <div class="d-flex flex-wrap gap-2 mb-3">
               <span v-for="tracker in trackers" :key="tracker.trackedCryptidId">

@@ -13,6 +13,8 @@ class TrackedCryptidsService {
   async createTrackedCryptid(trackedCryptidData) {
     const response = await api.post('api/trackedCryptids', trackedCryptidData)
     logger.log('TRACKING CRYPTID', response.data)
+    const newTracker = new TrackedCryptidProfile(response.data)
+    AppState.trackedCryptidProfiles.push(newTracker)
   }
 }
 
