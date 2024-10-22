@@ -4,6 +4,8 @@
 
 
 
+
+
 namespace cryptid_book.Repositories;
 
 public class TrackedCryptidsRepository
@@ -78,5 +80,25 @@ public class TrackedCryptidsRepository
     }, new { userId }).ToList();
 
     return trackedCryptidCryptids;
+  }
+
+  internal TrackedCryptid GetTrackedCryptidById(int trackedCryptidId)
+  {
+    string sql = "SELECT * FROM trackedCryptids WHERE id = @trackedCryptidId;";
+
+    TrackedCryptid trackedCryptid = _db.Query<TrackedCryptid>(sql, new { trackedCryptidId }).FirstOrDefault();
+    return trackedCryptid;
+  }
+
+  internal void DeleteTrackedCryptid(int trackedCryptidId)
+  {
+    string sql = "DELETE FROM trackedCryptids WHERE id = @trackedCryptidId LIMIT 1;";
+
+    int rowsAffected = _db.Execute(sql, new { trackedCryptidId });
+
+    if (rowsAffected != 1)
+    {
+      throw new Exception($"{rowsAffected} tracked cryptids were deleted, please check your sql syntax and do better");
+    }
   }
 }

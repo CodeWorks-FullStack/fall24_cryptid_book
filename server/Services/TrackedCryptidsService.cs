@@ -1,6 +1,7 @@
 
 
 
+
 namespace cryptid_book.Services;
 
 public class TrackedCryptidsService
@@ -27,5 +28,27 @@ public class TrackedCryptidsService
   {
     List<TrackedCryptidCryptid> trackedCryptidCryptids = _repository.GetTrackedCryptidCryptidsByAccountId(userId);
     return trackedCryptidCryptids;
+  }
+
+  private TrackedCryptid GetTrackedCryptidById(int trackedCryptidId)
+  {
+    TrackedCryptid trackedCryptid = _repository.GetTrackedCryptidById(trackedCryptidId);
+    if (trackedCryptid == null)
+    {
+      throw new Exception($"Invalid tracked cryptid id: {trackedCryptidId}");
+    }
+    return trackedCryptid;
+  }
+
+  internal void DeleteTrackedCryptid(int trackedCryptidId, string userId)
+  {
+    TrackedCryptid trackedCryptid = GetTrackedCryptidById(trackedCryptidId);
+
+    if (trackedCryptid.AccountId != userId)
+    {
+      throw new Exception("NOT YOUR RELATIONSHIP TO MEDDLE WITH, AMIGO");
+    }
+
+    _repository.DeleteTrackedCryptid(trackedCryptidId);
   }
 }

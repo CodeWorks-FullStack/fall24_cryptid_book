@@ -28,4 +28,20 @@ public class TrackedCryptidsController : ControllerBase
       return BadRequest(exception.Message);
     }
   }
+
+  [Authorize]
+  [HttpDelete("{trackedCryptidId}")]
+  public async Task<ActionResult<string>> DeleteTrackedCryptid(int trackedCryptidId)
+  {
+    try
+    {
+      Account userInfo = await _auth0Provider.GetUserInfoAsync<Account>(HttpContext);
+      _trackedCryptidsService.DeleteTrackedCryptid(trackedCryptidId, userInfo.Id);
+      return Ok("No longer in a relationship with that cryptid");
+    }
+    catch (Exception exception)
+    {
+      return BadRequest(exception.Message);
+    }
+  }
 }
